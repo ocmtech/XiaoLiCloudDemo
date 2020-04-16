@@ -1,17 +1,20 @@
 package com.ocm.zh500demo
 
 import android.app.PendingIntent
+import android.content.Context
 import android.content.Intent
 import android.graphics.Rect
 import android.hardware.Camera
 import android.nfc.NfcAdapter
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.inputmethod.InputMethodManager
+import androidx.appcompat.app.AppCompatActivity
 import com.guo.android_extend.widget.CameraFrameData
 import com.guo.android_extend.widget.CameraSurfaceView
 import com.ocm.zh500demo.utils.GPIOHelper
 import com.ocm.zh500demo.utils.NFCHelper
 import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity(), NFCHelper.NFCListener {
 
@@ -23,13 +26,34 @@ class MainActivity : AppCompatActivity(), NFCHelper.NFCListener {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupCamera()
-
+        val sp = getSharedPreferences(getString(R.string.app_name), 0)
         //NFC
         mAdapter = NfcAdapter.getDefaultAdapter(this)
         mPendingIntent = PendingIntent.getActivity(
             this, 0,
             Intent(this, javaClass).addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP), 0
         )
+        val sectorPwd = sp.getString("sectorPwd", "FFFFFFFFFFFF") ?: ""
+        val sector = sp.getString("sector", "2") ?: ""
+        val block = sp.getString("block", "10") ?: ""
+        NFCHelper.setup(sectorPwd, sector, block)
+        etPwd.setText(NFCHelper.sectorPwd)
+        etSector.setText(NFCHelper.readSector.toString())
+        etBlock.setText(NFCHelper.readBlock.toString())
+        buttonSave.setOnClickListener {
+            val sectorPwd1 = etPwd.text.toString()
+            val sector1 = etSector.text.toString()
+            val block1 = etBlock.text.toString()
+            NFCHelper.setup(sectorPwd1, sector1, block1)
+            sp.edit().apply {
+                putString("sectorPwd", sectorPwd1)
+                putString("sector", sector1)
+                putString("block", block1)
+            }.apply()
+            val imm: InputMethodManager =
+                getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
+            imm.toggleSoftInput(0, InputMethodManager.HIDE_NOT_ALWAYS)
+        }
         NFCHelper.openZHRFID()
         NFCHelper.listener = this
     }
@@ -45,6 +69,7 @@ class MainActivity : AppCompatActivity(), NFCHelper.NFCListener {
     }
 
     override fun onDestroy() {
+        NFCHelper.closeZHRFID()
         GPIOHelper.irLightOff()
         super.onDestroy()
     }

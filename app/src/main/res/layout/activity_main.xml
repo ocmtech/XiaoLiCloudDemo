@@ -3,6 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical"
+    android:focusable="true"
+    android:focusableInTouchMode="true"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -39,6 +41,67 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content" />
     </LinearLayout>
+    <TextView
+        android:text="NFC读卡设置"
+        android:textSize="24sp"
+        android:layout_margin="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="60dp" >
+        <TextView
+            android:textSize="20sp"
+            android:text="密码："
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:textSize="20sp"
+            android:id="@+id/etPwd"
+            android:maxLength="12"
+            android:singleLine="true"
+            android:layout_width="160dp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginStart="32dp"
+            android:textSize="20sp"
+            android:text="扇区："
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:textSize="20sp"
+            android:id="@+id/etSector"
+            android:maxLength="2"
+            android:inputType="number"
+            android:singleLine="true"
+            android:layout_width="40dp"
+            android:layout_height="match_parent" />
+        <TextView
+            android:layout_marginStart="32dp"
+            android:textSize="20sp"
+            android:text="块："
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+        <EditText
+            android:textSize="20sp"
+            android:id="@+id/etBlock"
+            android:maxLength="2"
+            android:inputType="number"
+            android:singleLine="true"
+            android:layout_width="40dp"
+            android:layout_height="match_parent" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/buttonSave"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:text="保存"
+        android:textSize="20sp"
+        android:layout_width="100dp"
+        android:layout_height="50dp" />
     <TextView
         android:text="NFC读卡结果"
         android:textSize="24sp"

@@ -1,6 +1,8 @@
 package com.ocm.zh500demo.utils
 
 import android.content.Intent
+import android.media.AudioManager
+import android.media.ToneGenerator
 import android.nfc.NfcAdapter
 import android.nfc.Tag
 import android.nfc.tech.MifareClassic
@@ -16,10 +18,32 @@ object NFCHelper {
     private val rfidCrl = IDReader()
     var listener: NFCListener? = null
     private val handler = Handler()
+    private var toneGen = ToneGenerator(AudioManager.STREAM_MUSIC, 100)
 
-    private const val sectorPwd = "FFFFFFFFFFFF" //扇区密码
-    private const val readSector = 2 //读的扇区
-    private const val readBlock = 10 //读的块
+    var sectorPwd = "FFFFFFFFFFFF" //扇区密码
+        private set
+    var readSector = 2 //读的扇区
+        private set
+    var readBlock = 10 //读的块
+        private set
+
+    fun setup(sectorPwd: String, sector: String, block: String) {
+        this.sectorPwd = sectorPwd
+        readSector = sector.toIntOrNull() ?: 2
+        readBlock = block.toIntOrNull() ?: 10
+        val pwd = StringHelper.hexStringToBytes(sectorPwd)
+        val keyAndMode = ArrayList<Int>()
+        keyAndMode.add(0x55)
+        keyAndMode.add(0x0A)
+        keyAndMode.addAll(pwd.map { it.toInt() })
+        rfidCrl.Sector_set_key_and_mode(keyAndMode.toIntArray())
+
+        val secNumAndBlockNum = ArrayList<Int>()
+        secNumAndBlockNum.add(0x66)
+        secNumAndBlockNum.add(readSector)
+        secNumAndBlockNum.add((readBlock) - readSector*4)
+        rfidCrl.Sector_set_read_sectorNum_and_blockNum(secNumAndBlockNum.toIntArray())
+    }
 
     fun decode(intent: Intent) {
         val tagFromIntent = intent.getParcelableExtra<Tag>(NfcAdapter.EXTRA_TAG)
@@ -89,8 +113,8 @@ object NFCHelper {
 
     /********** 新的设备，NFC读取方法，可兼容 **********/
     fun closeZHRFID() {
-        rfidCrl.closeRFID()
         rfidCrl.Sector_read_disable()
+        rfidCrl.closeRFID()
         mThreadRunning = false
         mRunning = false
     }
@@ -140,6 +164,7 @@ object NFCHelper {
                             "read: ${StringHelper.bytesToHex(ActivityArray0.map { it.toByte() }
                                 .toByteArray())}"
                         )
+                        toneGen.startTone(ToneGenerator.TONE_PROP_BEEP, 300)
                         if (ActivityArray0[8] == 0) {
                             handler.post {
                                 listener?.onNFCReadSuccess(cardNo10D, null)
