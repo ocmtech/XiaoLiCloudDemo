@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:text="摄像头"
+        android:textSize="24sp"
+        android:layout_margin="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="240dp" >
+        <com.guo.android_extend.widget.CameraSurfaceView
+            android:id="@+id/irSurfaceView"
+            android:layout_width="1dp"
+            android:layout_height="1dp"/>
+        <com.guo.android_extend.widget.CameraSurfaceView
+            android:id="@+id/rgbSurfaceView"
+            android:layout_width="1dp"
+            android:layout_height="1dp"/>
+        <com.guo.android_extend.widget.CameraGLSurfaceView
+            android:id="@+id/irGlsurfaceView"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+
+        <com.guo.android_extend.widget.CameraGLSurfaceView
+            android:id="@+id/rgbGlsurfaceView"
+            android:layout_marginEnd="16dp"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+    <TextView
+        android:text="NFC读卡结果"
+        android:textSize="24sp"
+        android:layout_margin="24dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/tvNFCResult"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:textSize="16sp"
+        android:lineSpacingExtra="8dp"
+        tools:text="卡号：1231234543654\n扇区块内容：dsfdsjfklsdjfssdklfjsdlk"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

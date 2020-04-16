@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="Gradle: com.guo.android_extend:android-extend:1.0.6@aar">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0d7617820bc2df87720fd34fddd2f35d/jetified-android-extend-1.0.6/jars/classes.jar!/" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/0d7617820bc2df87720fd34fddd2f35d/jetified-android-extend-1.0.6/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.guo.android_extend/android-extend/1.0.6/7fe61e8fdfecb4075544f9c02f0c3cca7908249f/android-extend-1.0.6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
