@@ -1,18 +1,4 @@
-package com.ocm.zh500demo.utils;
-
-import android.text.TextUtils;
-
-import java.io.ByteArrayOutputStream;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
-import javax.crypto.Mac;
-import javax.crypto.spec.SecretKeySpec;
+package com.ocm.xiaoli_cloud_demo.utils;
 
 /**
  * Created by ocm on 2017-06-20.

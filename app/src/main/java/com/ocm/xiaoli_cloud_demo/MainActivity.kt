@@ -1,4 +1,4 @@
-package com.ocm.zh500demo
+package com.ocm.xiaoli_cloud_demo
 
 import android.app.PendingIntent
 import android.content.Context
@@ -11,8 +11,8 @@ import android.view.inputmethod.InputMethodManager
 import androidx.appcompat.app.AppCompatActivity
 import com.guo.android_extend.widget.CameraFrameData
 import com.guo.android_extend.widget.CameraSurfaceView
-import com.ocm.zh500demo.utils.GPIOHelper
-import com.ocm.zh500demo.utils.NFCHelper
+import com.ocm.xiaoli_cloud_demo.utils.GPIOHelper
+import com.ocm.xiaoli_cloud_demo.utils.NFCHelper
 import kotlinx.android.synthetic.main.activity_main.*
 
 

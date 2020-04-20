@@ -1,4 +1,4 @@
-package com.ocm.zh500demo.utils
+package com.ocm.xiaoli_cloud_demo.utils
 
 import android.content.Intent
 import android.media.AudioManager

@@ -1,11 +1,10 @@
-package com.ocm.zh500demo.utils
+package com.ocm.xiaoli_cloud_demo.utils
 
 import android.util.Log
 import java.io.File
 import java.io.FileOutputStream
 import java.io.PrintWriter
 import java.util.*
-import kotlin.concurrent.timer
 
 /**
  * 二维码模块处理

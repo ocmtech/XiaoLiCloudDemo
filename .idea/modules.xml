@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/ZH500Demo.iml" filepath="$PROJECT_DIR$/ZH500Demo.iml" group="ZH500Demo" />
-      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="ZH500Demo/app" />
+      <module fileurl="file://$PROJECT_DIR$/XiaoLiCloudDemo.iml" filepath="$PROJECT_DIR$/XiaoLiCloudDemo.iml" group="XiaoLiCloudDemo" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" group="XiaoLiCloudDemo/app" />
     </modules>
   </component>
 </project>

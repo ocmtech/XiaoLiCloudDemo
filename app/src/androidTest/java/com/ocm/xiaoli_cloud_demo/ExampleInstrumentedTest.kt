@@ -1,4 +1,4 @@
-package com.ocm.zh500demo
+package com.ocm.xiaoli_cloud_demo
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +19,6 @@ class ExampleInstrumentedTest {
     fun useAppContext() {
         // Context of the app under test.
         val appContext = InstrumentationRegistry.getInstrumentation().targetContext
-        assertEquals("com.ocm.zh500demo", appContext.packageName)
+        assertEquals("com.ocm.xiaoli_cloud_demo", appContext.packageName)
     }
 }

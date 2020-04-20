@@ -1,4 +1,4 @@
-package com.ocm.zh500demo
+package com.ocm.xiaoli_cloud_demo
 
 import org.junit.Test
 
